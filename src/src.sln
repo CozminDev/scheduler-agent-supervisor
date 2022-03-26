@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "agent1", "agent1\agent1.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "agent2", "agent2\agent2.csproj", "{46111D77-C8F3-43EC-A196-3679BDE1E514}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "infrastructure", "infrastructure\infrastructure.csproj", "{5619C6DA-47DA-45D6-9815-0F4E41CD0CCA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +44,9 @@ Global
 		{46111D77-C8F3-43EC-A196-3679BDE1E514}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46111D77-C8F3-43EC-A196-3679BDE1E514}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46111D77-C8F3-43EC-A196-3679BDE1E514}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5619C6DA-47DA-45D6-9815-0F4E41CD0CCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5619C6DA-47DA-45D6-9815-0F4E41CD0CCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5619C6DA-47DA-45D6-9815-0F4E41CD0CCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5619C6DA-47DA-45D6-9815-0F4E41CD0CCA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
