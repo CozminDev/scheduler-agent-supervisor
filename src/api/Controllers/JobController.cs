@@ -17,10 +17,10 @@ public class JobController : ControllerBase
     [HttpGet]
     public IActionResult Get()
     {
-        return Ok();
+        return Ok("hello");
     }
 
-    [HttpPost(Name = "schedulejob")]
+    [HttpPost]
     public async Task<IActionResult> ScheduleJob([FromBody] Models.Job job)
     {
         await jobService.UpdateJob(job);

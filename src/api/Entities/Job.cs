@@ -4,10 +4,6 @@ using MongoDB.Bson.Serialization.Attributes;
 namespace Entities;
 
 public class Job{
-    [BsonId]
-    [BsonRepresentation(BsonType.ObjectId)]
-    public string? Id { get; set; }
-
     [BsonElement("JobID")]
     public Guid JobID { get; set; }
 

@@ -20,7 +20,7 @@ public class MongoDBHelper: IMongoDBHelper
         IMongoCollection<T> collection = GetCollection<T>(collectionName);
         FilterDefinition<T> filter = BuildFilter<T>(condition);
 
-        await collection.ReplaceOneAsync(filter, item);
+        await collection.ReplaceOneAsync(filter, item, new ReplaceOptions { IsUpsert = true });
     }
         
     private IMongoCollection<T> GetCollection<T>(string collectionName){
