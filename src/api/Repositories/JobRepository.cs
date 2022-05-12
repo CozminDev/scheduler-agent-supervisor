@@ -16,7 +16,7 @@ public class JobRepository: IJobRepository{
     }
 
     public async Task UpdateJob(Entities.Job job){
-        await mongoDBHelper.UpdateAsync<Entities.Job>(collectionName, x => x.JobID == job.JobID, job);
+        await mongoDBHelper.UpdateAsync<Entities.Job>(collectionName, x => x.ID == job.ID, job);
     }
 }
 

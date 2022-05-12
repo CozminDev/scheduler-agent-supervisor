@@ -1,4 +1,4 @@
-using AutoMapper;
+using Mapster;
 using Repositories;
 
 namespace Services;
@@ -9,17 +9,15 @@ public interface IJobService
 }
 
 public class JobService: IJobService{
-    private readonly IMapper mapper;
     private readonly IJobRepository jobRepo;
 
-    public JobService(IMapper mapper, IJobRepository jobRepo)
+    public JobService(IJobRepository jobRepo)
     {
-        this.mapper = mapper;
         this.jobRepo = jobRepo;
     }
 
     public async Task UpdateJob(Models.Job job){
-        await jobRepo.UpdateJob(mapper.Map<Entities.Job>(job));
+        await jobRepo.UpdateJob(job.Adapt<Entities.Job>());
     }
 }
 

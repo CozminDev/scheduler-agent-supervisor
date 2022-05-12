@@ -4,14 +4,14 @@ using MongoDB.Bson.Serialization.Attributes;
 namespace Entities;
 
 public class Job{
-    [BsonElement("JobID")]
-    public Guid JobID { get; set; }
+    [BsonElement("_id")]
+    public Guid ID { get; set; }
 
     [BsonElement("StartTime")]
-    public DateTime StartTime { get; set; }
+    public DateTime? StartTime { get; set; }
 
     [BsonElement("CompleteBy")]
-    public DateTime CompleteBy { get; set; }
+    public DateTime? CompleteBy { get; set; }
 
     [BsonElement("FailCount")]
     public int FailCount { get; set; }

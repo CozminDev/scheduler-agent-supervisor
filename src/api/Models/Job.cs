@@ -2,11 +2,11 @@
 namespace Models;
 
 public class Job{
-    public Guid JobID { get; set; }
+    public Guid ID { get; set; }
 
-    public DateTime StartTime { get; set; }
+    public DateTime? StartTime { get; set; }
 
-    public DateTime CompleteBy { get; set; }
+    public DateTime? CompleteBy { get; set; }
 
     public int FailCount { get; set; }
 
