@@ -1,0 +1,24 @@
+{ 
+    "version": "0.2.0", 
+
+    "configurations": [ 
+        { 
+            "name": ".NET Core Launch (web)", 
+            "type": "coreclr", 
+            "request": "launch", 
+            "preLaunchTask": "build", 
+            "program": "${workspaceFolder}/src/scheduler/bin/Debug/net6.0/scheduler.dll", 
+            "args": [], 
+            "cwd": "${workspaceFolder}/src/scheduler", 
+            "stopAtEntry": false, 
+            "env": { 
+                "ASPNETCORE_ENVIRONMENT": "Development" 
+            },
+        }, 
+        { 
+            "name": ".NET Core Attach", 
+            "type": "coreclr", 
+            "request": "attach" 
+        } 
+    ] 
+} 
