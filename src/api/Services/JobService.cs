@@ -1,3 +1,4 @@
+using domain;
 using Mapster;
 using Repositories;
 
@@ -17,7 +18,7 @@ public class JobService: IJobService{
     }
 
     public async Task UpdateJob(Models.Job job){
-        await jobRepo.UpdateJob(job.Adapt<Entities.Job>());
+        await jobRepo.UpdateJob(job.Adapt<Job>());
     }
 }
 

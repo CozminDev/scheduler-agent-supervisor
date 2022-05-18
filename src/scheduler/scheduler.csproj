@@ -10,10 +10,8 @@
   <ItemGroup>
     <PackageReference Include="MassTransit.RabbitMQ" Version="8.0.2" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
+    <PackageReference Include="infrastructure" Version="1.0.0"/>
+    <PackageReference Include="domain" Version="1.0.0"/>
   </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\domain\domain.csproj" />
-    <ProjectReference Include="..\infrastructure\infrastructure.csproj" />
-  </ItemGroup>
+  
 </Project>
