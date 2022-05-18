@@ -5,6 +5,8 @@ namespace infrastructure;
 
 public interface IMongoDBHelper{
     Task UpdateAsync<T>(string collectionName, Expression<Func<T, bool>> condition, T item);
+    
+    Task<List<T>> Select<T>(string collectionName, Expression<Func<T, bool>> condition);
 }
 
 public class MongoDBHelper: IMongoDBHelper
@@ -21,6 +23,15 @@ public class MongoDBHelper: IMongoDBHelper
         FilterDefinition<T> filter = BuildFilter<T>(condition);
 
         await collection.ReplaceOneAsync(filter, item, new ReplaceOptions { IsUpsert = true });
+    }
+
+    public async Task<List<T>> Select<T>(string collectionName, Expression<Func<T, bool>> condition){
+        IMongoCollection<T> collection = GetCollection<T>(collectionName);
+        FilterDefinition<T> filter = BuildFilter<T>(condition);
+
+        var documents = await collection.FindAsync(filter);
+
+        return documents.ToList();
     }
         
     private IMongoCollection<T> GetCollection<T>(string collectionName){
