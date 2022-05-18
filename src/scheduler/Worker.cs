@@ -37,5 +37,7 @@ public class Worker : BackgroundService
         ISendEndpoint endpoint = await _bus.GetSendEndpoint(new Uri("queue:job-queue"));
 
         await endpoint.Send(job);
+
+        _logger.LogInformation("Job sent to Queue at: {time}", DateTimeOffset.Now);
     }
 }
