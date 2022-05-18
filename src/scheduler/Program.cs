@@ -17,16 +17,12 @@ IHost host = builder
         services.AddSingleton<IJobRepository, JobRepository>();
         services.AddMassTransit(x =>
             {
-                // elided...
-
                 x.UsingRabbitMq((context,cfg) =>
                 {
                     cfg.Host("localhost", h => {
                         h.Username("guest");
                         h.Password("guest");
                     });
-
-                    cfg.ConfigureEndpoints(context);
                 });
             });
             
