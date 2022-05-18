@@ -1,4 +1,4 @@
-using MassTransit;
+﻿using MassTransit;
 using scheduler;
 using infrastructure;
 using Repositories;
