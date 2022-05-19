@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Mapster" Version="7.3.0" />
-    <PackageReference Include="MongoDB.Driver" Version="2.15.0" />
+    <PackageReference Include="MongoDB.Driver" Version="2.15.1" />
     <PackageReference Include="infrastructure" Version="1.0.0"/>
     <PackageReference Include="domain" Version="1.0.0"/>
   </ItemGroup>
