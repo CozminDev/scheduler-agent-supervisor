@@ -19,17 +19,26 @@ public class Worker : BackgroundService
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
+        _logger.LogInformation("Worker running at: {time}", DateTime.UtcNow);
+
         while (!stoppingToken.IsCancellationRequested)
         {
-            _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
+            //_logger.LogInformation("Worker running at: {time}", DateTime.UtcNow);
 
             var jobs = await _jobRepository.ListNotStarted();
 
             foreach(var job in jobs){
+                // DateTime now = DateTime.UtcNow;
+
+                // job.StartTime = now;
+                // job.CompleteBy = now.AddMinutes(10);
+                // job.JobStatus = JobStatus.Started;
+                // await _jobRepository.UpdateJob(job);
+
                 await Send(job);
             }
 
-            await Task.Delay(1000, stoppingToken);
+            await Task.Delay(5000, stoppingToken);
         }
     }
 
@@ -38,6 +47,6 @@ public class Worker : BackgroundService
 
         await endpoint.Send(job);
 
-        _logger.LogInformation("Job sent to Queue at: {time}", DateTimeOffset.Now);
+        //_logger.LogInformation("Job sent to Queue at: {time}", DateTime.UtcNow);
     }
 }
