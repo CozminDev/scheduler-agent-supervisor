@@ -7,7 +7,7 @@
             "type": "process", 
             "args": [ 
                 "build", 
-                "${workspaceFolder}/src/agent1/agent1.csproj", 
+                "${workspaceFolder}/src/agent/agent.csproj", 
                 "/property:GenerateFullPaths=true", 
                 "/consoleloggerparameters:NoSummary" 
 
@@ -20,7 +20,7 @@
             "type": "process", 
             "args": [ 
                 "publish", 
-                "${workspaceFolder}/src/agent1/agent1.csproj", 
+                "${workspaceFolder}/src/agent/agent.csproj", 
                 "/property:GenerateFullPaths=true", 
                 "/consoleloggerparameters:NoSummary" 
 
