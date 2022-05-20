@@ -7,9 +7,9 @@
             "type": "coreclr", 
             "request": "launch", 
             "preLaunchTask": "build", 
-            "program": "${workspaceFolder}/src/scheduler/bin/Debug/net6.0/scheduler.dll", 
+            "program": "${workspaceFolder}/src/agent1/bin/Debug/net6.0/agent1.dll", 
             "args": [], 
-            "cwd": "${workspaceFolder}/src/scheduler", 
+            "cwd": "${workspaceFolder}/src/agent1", 
             "stopAtEntry": false, 
             "env": { 
                 "ASPNETCORE_ENVIRONMENT": "Development" 

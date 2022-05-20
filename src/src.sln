@@ -9,9 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "scheduler", "scheduler\sche
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "supervisor", "supervisor\supervisor.csproj", "{D592FE0E-7C8E-48FB-AC35-49439AF02A3A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "agent1", "agent1\agent1.csproj", "{1AB5B498-2F6C-4747-BDB7-212076851A48}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "agent2", "agent2\agent2.csproj", "{46111D77-C8F3-43EC-A196-3679BDE1E514}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "agent", "agent\agent.csproj", "{1AB5B498-2F6C-4747-BDB7-212076851A48}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "infrastructure", "infrastructure\infrastructure.csproj", "{5619C6DA-47DA-45D6-9815-0F4E41CD0CCA}"
 EndProject
@@ -40,10 +38,6 @@ Global
 		{1AB5B498-2F6C-4747-BDB7-212076851A48}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1AB5B498-2F6C-4747-BDB7-212076851A48}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1AB5B498-2F6C-4747-BDB7-212076851A48}.Release|Any CPU.Build.0 = Release|Any CPU
-		{46111D77-C8F3-43EC-A196-3679BDE1E514}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{46111D77-C8F3-43EC-A196-3679BDE1E514}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{46111D77-C8F3-43EC-A196-3679BDE1E514}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{46111D77-C8F3-43EC-A196-3679BDE1E514}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5619C6DA-47DA-45D6-9815-0F4E41CD0CCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5619C6DA-47DA-45D6-9815-0F4E41CD0CCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5619C6DA-47DA-45D6-9815-0F4E41CD0CCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
