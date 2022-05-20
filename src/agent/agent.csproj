@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>dotnet-agent1-cd95f8a9-b87f-41a6-86a3-a374165106e3</UserSecretsId>
+    <UserSecretsId>dotnet-agent-cd95f8a9-b87f-41a6-86a3-a374165106e3</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

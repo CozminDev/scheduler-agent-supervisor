@@ -23,17 +23,16 @@ public class Worker : BackgroundService
 
         while (!stoppingToken.IsCancellationRequested)
         {
-            //_logger.LogInformation("Worker running at: {time}", DateTime.UtcNow);
-
             var jobs = await _jobRepository.ListNotStarted();
 
             foreach(var job in jobs){
-                // DateTime now = DateTime.UtcNow;
+                DateTime now = DateTime.UtcNow;
 
-                // job.StartTime = now;
-                // job.CompleteBy = now.AddMinutes(10);
-                // job.JobStatus = JobStatus.Started;
-                // await _jobRepository.UpdateJob(job);
+                job.StartTime = now;
+                job.CompleteBy = now.AddMinutes(10);
+                job.JobStatus = JobStatus.Scheduled;
+                await _jobRepository.UpdateJob(job);
+                _logger.LogInformation("Job scheduled at: {time}", DateTime.UtcNow);
 
                 await Send(job);
             }
@@ -46,7 +45,5 @@ public class Worker : BackgroundService
         ISendEndpoint endpoint = await _bus.GetSendEndpoint(new Uri("queue:job-queue"));
 
         await endpoint.Send(job);
-
-        //_logger.LogInformation("Job sent to Queue at: {time}", DateTime.UtcNow);
     }
 }

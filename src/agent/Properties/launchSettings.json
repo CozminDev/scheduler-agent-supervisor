@@ -1,6 +1,6 @@
 ﻿{
   "profiles": {
-    "agent1": {
+    "agent": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "environmentVariables": {
