@@ -8,12 +8,10 @@ var builder = Host.CreateDefaultBuilder(args);
 IHost host = builder
     .ConfigureServices((hostContext, services) =>
     {
-        Config config = new Config(){
-            ConnectionString = Environment.GetEnvironmentVariable("DBHOST") ?? hostContext.Configuration.GetSection("Config").GetValue<string>("ConnectionString"),
-            DatabaseName = Environment.GetEnvironmentVariable("DBNAME") ?? hostContext.Configuration.GetSection("Config").GetValue<string>("DatabaseName"),
-        };
-        services.AddSingleton<IConfig>(config);
-        services.AddSingleton<IMongoDBHelper, MongoDBHelper>();
+        services.AddMongoDBHelper(cfg => {
+             cfg.ConnectionString = Environment.GetEnvironmentVariable("DBHOST");
+             cfg.DatabaseName =  Environment.GetEnvironmentVariable("DBNAME");
+        });
         services.AddSingleton<IJobRepository, JobRepository>();
         services.AddMassTransit(x =>
             {

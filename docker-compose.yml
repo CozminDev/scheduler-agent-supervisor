@@ -37,7 +37,7 @@ services:
     depends_on:
       - rabbit
       - mongo
-    restart: "no"
+    restart: always
 
   api:
     image: api
@@ -54,6 +54,21 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
     depends_on:
       - mongo
-    restart: "no"
+    restart: always
+
+  agent:
+    image: agent
+    build: 
+      context: ./src/agent
+      dockerfile: Dockerfile-dev
+    container_name: agent
+    environment:
+      - DBHOST=mongodb://mongo:27017/?replicaSet=dbrs&directConnection=true
+      - DBNAME=JobStore
+      - RABBIT=rabbitmq://rabbit:5672
+    depends_on:
+      - rabbit
+      - mongo
+    restart: always
 
 
