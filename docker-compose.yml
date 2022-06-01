@@ -28,10 +28,8 @@ services:
     image: scheduler
     build: 
       context: ./src/scheduler
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile-dev
     container_name: scheduler
-    ports:
-      - "5000:5000"
     environment:
       - DBHOST=mongodb://mongo:27017/?replicaSet=dbrs&directConnection=true
       - DBNAME=JobStore

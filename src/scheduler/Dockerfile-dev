@@ -3,15 +3,18 @@ WORKDIR /app
 
 # Copy everything
 COPY . ./
-
-EXPOSE 5000
 # Restore as distinct layers
 RUN dotnet restore
 # Build and publish a release
-RUN dotnet publish -c Release -o out
+RUN dotnet publish -c Debug -o out
+
+RUN apt update && \
+    apt install unzip && \
+    curl -sSL https://aka.ms/getvsdbgsh | /bin/sh /dev/stdin -v latest -l ./out/vsdbg
 
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
+
 WORKDIR /app
 COPY --from=build-env /app/out .
 ENTRYPOINT ["dotnet", "scheduler.dll"]
