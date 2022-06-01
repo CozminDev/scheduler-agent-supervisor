@@ -9,8 +9,8 @@ IHost host = builder
     .ConfigureServices((hostContext, services) =>
     {
         Config config = new Config(){
-            ConnectionString = hostContext.Configuration.GetSection("Config").GetValue<string>("ConnectionString"),
-            DatabaseName = hostContext.Configuration.GetSection("Config").GetValue<string>("DatabaseName"),
+            ConnectionString = Environment.GetEnvironmentVariable("DBHOST") ?? hostContext.Configuration.GetSection("Config").GetValue<string>("ConnectionString"),
+            DatabaseName = Environment.GetEnvironmentVariable("DBNAME") ?? hostContext.Configuration.GetSection("Config").GetValue<string>("DatabaseName"),
         };
         services.AddSingleton<IConfig>(config);
         services.AddSingleton<IMongoDBHelper, MongoDBHelper>();
@@ -19,10 +19,11 @@ IHost host = builder
             {
                 x.UsingRabbitMq((context,cfg) =>
                 {
-                    cfg.Host("localhost", h => {
+                    cfg.Host(Environment.GetEnvironmentVariable("RABBIT"), h => {
                         h.Username("guest");
                         h.Password("guest");
                     });
+
                 });
             });
             

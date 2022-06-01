@@ -26,15 +26,16 @@ public class Worker : BackgroundService
             var jobs = await _jobRepository.ListNotStarted();
 
             foreach(var job in jobs){
-                DateTime now = DateTime.UtcNow;
-
-                job.StartTime = now;
-                job.CompleteBy = now.AddMinutes(10);
-                job.JobStatus = JobStatus.Scheduled;
-                await _jobRepository.UpdateJob(job);
                 _logger.LogInformation("Job scheduled at: {time}", DateTime.UtcNow);
+                // DateTime now = DateTime.UtcNow;
 
-                await Send(job);
+                // job.StartTime = now;
+                // job.CompleteBy = now.AddMinutes(10);
+                // job.JobStatus = JobStatus.Scheduled;
+                // await _jobRepository.UpdateJob(job);
+                // _logger.LogInformation("Job scheduled at: {time}", DateTime.UtcNow);
+
+                // await Send(job);
             }
 
             await Task.Delay(5000, stoppingToken);
