@@ -6,8 +6,8 @@ IHost host = Host.CreateDefaultBuilder(args)
     .ConfigureServices((hostContext, services) =>
     {
         services.AddMongoDBHelper(cfg => {
-             cfg.ConnectionString = hostContext.Configuration.GetSection("Config").GetValue<string>("ConnectionString");
-             cfg.DatabaseName =  hostContext.Configuration.GetSection("Config").GetValue<string>("DatabaseName");
+             cfg.ConnectionString = Environment.GetEnvironmentVariable("DBHOST");
+             cfg.DatabaseName =  Environment.GetEnvironmentVariable("DBNAME");
         });
         services.AddTransient<IJobRepository, JobRepository>();
         services.AddMassTransit(x =>
@@ -15,7 +15,7 @@ IHost host = Host.CreateDefaultBuilder(args)
                 x.AddConsumer<JobConsumer>();
                 x.UsingRabbitMq((context, cfg) =>
                 {
-                    cfg.Host("localhost", h =>
+                    cfg.Host(Environment.GetEnvironmentVariable("RABBIT"), h =>
                     {
                         h.Username("guest");
                         h.Password("guest");

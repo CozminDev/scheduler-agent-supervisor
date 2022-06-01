@@ -1,0 +1,74 @@
+version: '3'
+
+services:
+  mongo:
+    image: mongo:4.2.0
+    container_name: mongo
+    ports:
+      - "27021:27017"
+    expose:
+      - "27017"
+    volumes:
+     - /home/vagrant/mongodbdata:/data/db:z
+    restart: always
+    command: --replSet dbrs
+
+  rabbit:
+    image: rabbitmq:3.8.1-management
+    container_name: rabbit
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    expose:
+      - "5672"
+      - "15672"
+    restart: always
+
+  scheduler:
+    image: scheduler
+    build: 
+      context: ./src/scheduler
+      dockerfile: Dockerfile-dev
+    container_name: scheduler
+    environment:
+      - DBHOST=mongodb://mongo:27017/?replicaSet=dbrs&directConnection=true
+      - DBNAME=JobStore
+      - RABBIT=rabbitmq://rabbit:5672
+    depends_on:
+      - rabbit
+      - mongo
+    restart: always
+
+  api:
+    image: api
+    build: 
+      context: ./src/api
+      dockerfile: Dockerfile-dev
+    container_name: api
+    ports:
+      - "7125:80"
+    environment:
+      - DBHOST=mongodb://mongo:27017/?replicaSet=dbrs&directConnection=true
+      - DBNAME=JobStore
+      - ASPNETCORE_URLS=http://+:80
+      - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+      - mongo
+    restart: always
+
+  agent:
+    image: agent
+    build: 
+      context: ./src/agent
+      dockerfile: Dockerfile-dev
+    container_name: agent
+    environment:
+      - DBHOST=mongodb://mongo:27017/?replicaSet=dbrs&directConnection=true
+      - DBNAME=JobStore
+      - RABBIT=rabbitmq://rabbit:5672
+    depends_on:
+      - rabbit
+      - mongo
+    restart: always
+
+
