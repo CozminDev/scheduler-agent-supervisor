@@ -6,8 +6,6 @@ services:
     container_name: mongo
     ports:
       - "27021:27017"
-    expose:
-      - "27017"
     volumes:
      - /home/vagrant/mongodbdata:/data/db:z
     restart: always
@@ -68,6 +66,19 @@ services:
       - RABBIT=rabbitmq://rabbit:5672
     depends_on:
       - rabbit
+      - mongo
+    restart: always
+  
+  supervisor:
+    image: supervisor
+    build: 
+      context: ./src/supervisor
+      dockerfile: Dockerfile-dev
+    container_name: supervisor
+    environment:
+      - DBHOST=mongodb://mongo:27017/?replicaSet=dbrs&directConnection=true
+      - DBNAME=JobStore
+    depends_on:
       - mongo
     restart: always
 

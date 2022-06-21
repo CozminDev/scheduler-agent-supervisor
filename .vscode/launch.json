@@ -9,13 +9,13 @@
             "processId": "${command:pickRemoteProcess}",
             "pipeTransport": {
                 "pipeProgram": "docker",
-                "pipeArgs": ["exec", "-i", "scheduler"],
+                "pipeArgs": ["exec", "-i", "agent"],
                 "debuggerPath": "/app/vsdbg/vsdbg",
-                "pipeCwd": "/home/vagrant/scheduler-agent-supervisor/src/scheduler",
+                "pipeCwd": "/home/vagrant/scheduler-agent-supervisor/src/agent",
                 "quoteArgs": false
             },
             "sourceFileMap": {
-                "/app": "/home/vagrant/scheduler-agent-supervisor/src/scheduler"
+                "/app": "/home/vagrant/scheduler-agent-supervisor/src/agent"
             },
         }
     ] 
